@@ -16,65 +16,6 @@ for (const target of revealTargets) {
   revealObserver.observe(target);
 }
 
-const navHeaders = document.querySelectorAll('.site-header');
-
-for (const header of navHeaders) {
-  const toggle = header.querySelector('.nav-toggle');
-  const nav = header.querySelector('.nav');
-  if (!toggle || !nav) continue;
-
-  const setMenuState = (isOpen) => {
-    header.classList.toggle('nav-open', isOpen);
-    document.body.classList.toggle('nav-lock', isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
-  };
-
-  const closeMenu = () => {
-    setMenuState(false);
-  };
-
-  const openMenu = () => {
-    setMenuState(true);
-  };
-
-  toggle.addEventListener('click', () => {
-    const isOpen = header.classList.contains('nav-open');
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  nav.addEventListener('click', (event) => {
-    if (event.target === nav) {
-      closeMenu();
-    }
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeMenu();
-    }
-  });
-
-  nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  document.addEventListener('click', (event) => {
-    if (!header.contains(event.target)) {
-      closeMenu();
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if (toggle.offsetParent === null) {
-      closeMenu();
-    }
-  });
-}
-
 const copyButton = document.querySelector('.copy-btn');
 const toast = document.getElementById('toast');
 
