@@ -503,14 +503,16 @@ details p {
   .nav {
     position: fixed;
     inset: 0;
-    padding: 86px 18px 24px;
-    background: rgba(18, 15, 12, 0.46);
-    backdrop-filter: blur(4px) saturate(1.05);
+    padding: 82px 14px 16px;
+    background: rgba(18, 15, 12, 0.34);
+    backdrop-filter: blur(6px) saturate(1);
     box-shadow: none;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    align-items: center;
+    gap: 10px;
+    isolation: isolate;
+    overflow-y: auto;
     z-index: 70;
     opacity: 0;
     visibility: hidden;
@@ -519,14 +521,31 @@ details p {
     transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.25s;
   }
 
+  .nav::before {
+    content: "";
+    position: absolute;
+    top: 74px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border-radius: 26px;
+    background: linear-gradient(160deg, rgba(246, 244, 240, 0.94), rgba(235, 231, 224, 0.94));
+    border: 1px solid rgba(24, 20, 16, 0.16);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+    z-index: -1;
+  }
+
   .nav a {
-    border: 1px solid var(--line);
+    width: 100%;
+    max-width: 520px;
+    border: 1px solid rgba(18, 18, 18, 0.11);
     border-radius: 12px;
     padding: 14px 16px;
-    width: min(560px, 92vw);
-    margin-inline: auto;
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    margin-inline: 0;
+    color: #171717;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.985);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     transform: translateX(18px);
     opacity: 0;
     transition: transform 0.35s ease, opacity 0.3s ease;
