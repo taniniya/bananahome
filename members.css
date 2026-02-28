@@ -352,8 +352,8 @@ main {
     position: fixed;
     inset: 0;
     padding: 86px 18px 24px;
-    background: linear-gradient(160deg, rgba(250, 249, 246, 0.97), rgba(233, 230, 223, 0.97));
-    backdrop-filter: blur(10px);
+    background: rgba(18, 15, 12, 0.46);
+    backdrop-filter: blur(4px) saturate(1.05);
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -371,7 +371,10 @@ main {
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.74);
+    width: min(560px, 92vw);
+    margin-inline: auto;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
     transform: translateX(18px);
     opacity: 0;
     transition: transform 0.35s ease, opacity 0.3s ease;
@@ -427,3 +430,4 @@ main {
     align-items: flex-start;
   }
 }
+
