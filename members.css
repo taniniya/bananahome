@@ -301,11 +301,32 @@ main {
     order: 3;
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 8px;
     margin-top: 4px;
   }
 }
 
 @media (max-width: 640px) {
+  .site-header {
+    gap: 10px;
+    padding-top: 16px;
+  }
+
+  .logo-mark {
+    font-size: 1.1rem;
+  }
+
+  .logo-sub {
+    letter-spacing: 0.1em;
+  }
+
+  .nav {
+    gap: 10px;
+    font-size: 0.93rem;
+  }
+
   .member-grid {
     grid-template-columns: 1fr;
   }
@@ -315,4 +336,3 @@ main {
     align-items: flex-start;
   }
 }
-

@@ -240,12 +240,26 @@ body {
 @media (max-width: 860px) {
   .site-header {
     flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 16px;
   }
 
   .nav {
     width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 14px;
+    row-gap: 8px;
+    font-size: 0.93rem;
     margin-top: 4px;
+  }
+
+  .logo-mark {
+    font-size: 1.1rem;
+  }
+
+  .logo-sub {
+    letter-spacing: 0.1em;
   }
 
   .asset-card {
