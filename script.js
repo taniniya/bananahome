@@ -23,14 +23,39 @@ for (const header of navHeaders) {
   const nav = header.querySelector('.nav');
   if (!toggle || !nav) continue;
 
+  const setMenuState = (isOpen) => {
+    header.classList.toggle('nav-open', isOpen);
+    document.body.classList.toggle('nav-lock', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  };
+
   const closeMenu = () => {
-    header.classList.remove('nav-open');
-    toggle.setAttribute('aria-expanded', 'false');
+    setMenuState(false);
+  };
+
+  const openMenu = () => {
+    setMenuState(true);
   };
 
   toggle.addEventListener('click', () => {
-    const isOpen = header.classList.toggle('nav-open');
-    toggle.setAttribute('aria-expanded', String(isOpen));
+    const isOpen = header.classList.contains('nav-open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  nav.addEventListener('click', (event) => {
+    if (event.target === nav) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
   });
 
   nav.querySelectorAll('a').forEach((link) => {
