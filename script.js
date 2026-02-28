@@ -16,6 +16,40 @@ for (const target of revealTargets) {
   revealObserver.observe(target);
 }
 
+const navHeaders = document.querySelectorAll('.site-header');
+
+for (const header of navHeaders) {
+  const toggle = header.querySelector('.nav-toggle');
+  const nav = header.querySelector('.nav');
+  if (!toggle || !nav) continue;
+
+  const closeMenu = () => {
+    header.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = header.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!header.contains(event.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (toggle.offsetParent === null) {
+      closeMenu();
+    }
+  });
+}
+
 const copyButton = document.querySelector('.copy-btn');
 const toast = document.getElementById('toast');
 
